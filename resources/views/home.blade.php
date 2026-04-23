@@ -113,7 +113,7 @@
       min-height: calc(100vh - 68px);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      align-items: stretch;
+      align-items: center;
     }
 
     .hero-left {
@@ -218,36 +218,45 @@
 
     .hero-mosaic {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 8px;
-      height: 100%;
-      min-height: calc(100vh - 68px);
-      padding: 16px 16px 16px 8px;
+      grid-template-columns: 1fr 1.2fr;
+      grid-template-rows: 250px 250px;
+      gap: 1.15rem;
+      padding: 1rem 1rem 1rem 0;
     }
 
     .mosaic-main {
-      grid-row: 1 / 3;
+      grid-column: 1;
+      grid-row: 1;
       border-radius: var(--radius); overflow: hidden;
-      background: var(--gold-lt);
+      background: white;
       display: flex; align-items: center; justify-content: center;
     }
 
     .mosaic-main img {
       width: 100%; height: 100%;
-      object-fit: contain; padding: 1.5rem;
+      object-fit: contain;
+      padding: 1.5rem;
+      mix-blend-mode: multiply;
     }
 
     .mosaic-main-placeholder { font-size: 5rem; opacity: 0.3; }
 
     .mosaic-a {
+      grid-column: 2;
+      grid-row: 1 / 3;
       border-radius: var(--radius); overflow: hidden;
       background: var(--bg2);
       display: flex; align-items: center; justify-content: center;
-      font-size: 2.2rem;
+    }
+
+    .mosaic-a video {
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
 
     .mosaic-b {
+      grid-column: 1;
+      grid-row: 2;
       border-radius: var(--radius); overflow: hidden;
       background: var(--dark);
       display: flex; align-items: center; justify-content: center;
@@ -288,9 +297,9 @@
     /* ════ GALERI ════ */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: 260px 260px;
-      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 250px 250px;
+      gap: 1.25rem;
     }
 
     .g-item {
@@ -326,14 +335,14 @@
 
     .g-item:hover img { transform: scale(1.05); }
 
-    .g1 { grid-column: 1 / 5;   grid-row: 1;     background: #FEE9A0; }
-    .g2 { grid-column: 5 / 8;   grid-row: 1;     background: #C5CEDF; }
-    .g3 { grid-column: 8 / 10;  grid-row: 1;     background: #D9DEEA; }
-    .g4 { grid-column: 1 / 4;   grid-row: 2;     background: #E8D5C0; }
-    .g5 { grid-column: 10 / 13; grid-row: 1 / 3; background: #EEF0EC; }
-    .g6 { grid-column: 4 / 10;  grid-row: 2;     background: #FEF0C0; }
+    .g1 { background: #FEE9A0; }
+    .g2 { background: #C5CEDF; }
+    .g3 { background: #D9DEEA; }
+    .g4 { background: #E8D5C0; }
+    .g5 { grid-column: 3; grid-row: 1 / 3; background: #EEF0EC; }
+    .g6 { background: #FEF0C0; }
 
-    .g5 img { object-fit: contain; background: #EEF0EC; }
+    .g5 img { object-fit: cover; background: #EEF0EC; }
 
     /* ════ FASILITAS ════ */
     .fasilitas-layout {
@@ -415,16 +424,20 @@
 
     /* ════ HARGA ════ */
     .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.15rem;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 850px;
+      margin: 0 auto;
+      align-items: stretch;
     }
 
     .price-card {
       background: var(--white);
       border: 1.5px solid rgba(232,168,32,0.18);
       border-radius: var(--radius);
-      padding: 1.7rem 1.45rem;
+      padding: 2rem 1.8rem;
       position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
       transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
     }
 
@@ -488,10 +501,10 @@
     }
 
     .price-btn {
-      display: block; margin-top: 1.6rem;
-      text-align: center; padding: 0.7rem;
+      display: block; margin-top: auto; padding-top: 1.6rem;
+      text-align: center; padding: 0.8rem;
       border-radius: 50px;
-      font-family: var(--font); font-size: 0.81rem; font-weight: 600;
+      font-family: var(--font); font-size: 0.88rem; font-weight: 600;
       border: 1.5px solid rgba(232,168,32,0.4); color: var(--dark);
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
@@ -544,7 +557,7 @@
     .testi-info { font-size: 0.71rem; color: rgba(255,255,255,0.38); font-weight: 300; }
 
     /* ════ LOKASI ════ */
-    .lokasi-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3.5rem; align-items: start; }
+    .lokasi-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3.5rem; align-items: stretch; }
 
     .lokasi-address {
       font-size: 1rem; font-weight: 500; line-height: 1.65;
@@ -572,7 +585,7 @@
 
     .map-wrap {
       border-radius: var(--radius); overflow: hidden;
-      min-height: 440px;
+      height: 100%; min-height: 440px;
       border: 1.5px solid rgba(232,168,32,0.2);
       box-shadow: var(--shadow);
     }
@@ -683,11 +696,11 @@
 
     .footer-logo {
       width: 30px; height: 35px; border-radius: 7px;
-      overflow: hidden; background: rgba(232,168,32,0.15);
+      overflow: hidden; background: var(--white);
       display: flex; align-items: center; justify-content: center;
     }
 
-    .footer-logo img { width: 100%; height: 100%; object-fit: fill; }
+    .footer-logo img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
 
     .footer-links { display: flex; gap: 1.5rem; list-style: none; }
 
@@ -734,12 +747,12 @@
       .kontak-layout { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 180px 180px 180px 180px;
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
       }
       .g1, .g2, .g3, .g4, .g5, .g6 { grid-column: auto; grid-row: auto; }
       .g5 { grid-row: span 2; }
-      .g5 img { object-fit: contain; }
+      .g5 img { object-fit: cover; }
       .navbar-links { display: none; }
       .hero-stats { gap: 0; }
     }
@@ -806,7 +819,9 @@
           <img src="images/Logo Kos.png" alt="Kos Shinta" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="mosaic-main-placeholder" style="display:none;">🏠</div>
         </div>
-        <div class="mosaic-a">🛏</div>
+        <div class="mosaic-a">
+          <video src="{{ url('video-stream') }}" controls preload="metadata"></video>
+        </div>
         <div class="mosaic-b">
           <p>"Harga terjangkau,<br>fasilitas <em>lengkap</em>"</p>
         </div>
@@ -823,7 +838,6 @@
     <div class="gallery-grid">
       <div class="g-item g1" data-label="Kamar Tipe Premium"><div class="img-placeholder">🛏</div></div>
       <div class="g-item g2" data-label="Kamar Mandi Dalam"><div class="img-placeholder">🚿</div></div>
-      <div class="g-item g3" data-label="Ruang Bersama"><div class="img-placeholder">🛋</div></div>
       <div class="g-item g4" data-label="Dapur Bersama"><div class="img-placeholder">🍳</div></div>
       <div class="g-item g5" data-label="Area Parkir">
         <img src="images/Parkiran.jpeg" alt="Area Parkir" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -842,17 +856,16 @@
           <h2 class="section-title">Hunian yang dirancang untuk kenyamanan</h2>
         </div>
         <div class="desc-text">
-          <p><strong>Kos Shinta</strong> berdiri sejak 2022 dengan konsep hunian bersih, aman, dan nyaman. Dikelola langsung oleh pemilik, setiap kamar dirawat secara berkala.</p>
-          <p>Berlokasi di kawasan tenang Banyumanik, Semarang — dekat kampus Undip, rumah sakit, dan pusat perbelanjaan. Cocok untuk <strong>mahasiswa</strong>, <strong>karyawan</strong>, maupun keluarga kecil.</p>
+          <p><strong>Pojok Hunian</strong> berdiri sejak 2022 dengan konsep hunian bersih, aman, dan nyaman. Dikelola langsung oleh pemilik, setiap kamar dirawat secara berkala.</p>
+          <p>Berlokasi di kawasan tenang Banyumanik, Semarang — dekat kampus UNDIP, RS Hermina, dan pusat perbelanjaan. Cocok untuk <strong>mahasiswa</strong> dan <strong>karyawan</strong></p>
         </div>
         <div class="perks-grid">
           <div class="perk-card"><span class="perk-icon">📶</span><div class="perk-info"><strong>WiFi Fiber 100 Mbps</strong><span>Unlimited, stabil 24 jam</span></div></div>
-          <div class="perk-card"><span class="perk-icon">❄️</span><div class="perk-info"><strong>AC Setiap Kamar</strong><span>1/2 PK, belum termasuk listrik</span></div></div>
+          <div class="perk-card"><span class="perk-icon">❄️</span><div class="perk-info"><strong>AC/Non AC</strong><span>1/2 PK, belum termasuk listrik</span></div></div>
           <div class="perk-card"><span class="perk-icon">🔒</span><div class="perk-info"><strong>Keamanan 24 Jam</strong><span>CCTV terpasang</span></div></div>
           <div class="perk-card"><span class="perk-icon">🚿</span><div class="perk-info"><strong>Kamar Mandi Dalam</strong><span>Air panas &amp; shower</span></div></div>
-          <div class="perk-card"><span class="perk-icon">👕</span><div class="perk-info"><strong>Laundry Kiloan</strong><span>Antar-jemput dari kamar</span></div></div>
-          <div class="perk-card"><span class="perk-icon">🚗</span><div class="perk-info"><strong>Parkir Motor</strong><span>Area parkir tersedia</span></div></div>
-          <div class="perk-card"><span class="perk-icon">🍳</span><div class="perk-info"><strong>Dapur Bersama</strong><span>Lengkap dengan peralatan masak</span></div></div>
+          <div class="perk-card"><span class="perk-icon">🚗</span><div class="perk-info"><strong>Area Parkir</strong><span>Hanya untuk motor</span></div></div>
+          <div class="perk-card"><span class="perk-icon">🍳</span><div class="perk-info"><strong>Dapur</strong><span>Di dalam setiap kamar dan dapur bersama</span></div></div>
           <div class="perk-card"><span class="perk-icon">🧹</span><div class="perk-info"><strong>Cleaning Service</strong><span>Koridor 2×/minggu</span></div></div>
         </div>
       </div>
@@ -876,56 +889,38 @@
       <h2 class="section-title">Transparan, tanpa biaya tersembunyi</h2>
     </div>
     <div class="pricing-grid">
-      <div class="price-card">
-        <span class="price-type">Tipe A</span>
-        <div class="price-name">Kamar Standar</div>
-        <div class="price-amount">Rp 600K</div>
-        <div class="price-period">per bulan · ukuran 3×4 m</div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li class="price-feature">Kasur &amp; lemari bawaan</li>
-          <li class="price-feature">Kipas angin</li>
-          <li class="price-feature">WiFi unlimited</li>
-          <li class="price-feature">Kamar mandi bersama</li>
-          <li class="price-feature">Parkir motor gratis</li>
-        </ul>
-        <a href="#kontak" class="price-btn">Tanya Ketersediaan</a>
-      </div>
-
       <div class="price-card featured">
         <span class="featured-badge">Paling Diminati</span>
-        <span class="price-type">Tipe B</span>
-        <div class="price-name">Kamar Premium</div>
-        <div class="price-amount">Rp 850K</div>
-        <div class="price-period">per bulan · ukuran 4×4 m</div>
+        <span class="price-type">Tipe A</span>
+        <div class="price-name">Non AC</div>
+        <div class="price-amount">Rp 950K</div>
+        <div class="price-period">per bulan · ukuran 3,5×5 m</div>
         <div class="price-divider" style="background:rgba(232,168,32,0.22)"></div>
         <ul class="price-features">
-          <li class="price-feature">AC 1/2 PK + listrik included</li>
-          <li class="price-feature">Kamar mandi dalam + air panas</li>
-          <li class="price-feature">Kasur, meja, &amp; lemari bawaan</li>
-          <li class="price-feature">WiFi fiber 100 Mbps</li>
-          <li class="price-feature">Parkir motor &amp; mobil</li>
-          <li class="price-feature">Laundry kiloan diskon 20%</li>
+          <li class="price-feature">Kasur &amp; lemari bawaan</li>
+          <li class="price-feature">WiFi 150 Mbps</li>
+          <li class="price-feature">Kamar mandi dalam</li>
+          <li class="price-feature">Parkir motor</li>
         </ul>
         <a href="#kontak" class="price-btn">Tanya Ketersediaan</a>
       </div>
 
       <div class="price-card">
-        <span class="price-type">Tipe C</span>
-        <div class="price-name">Kamar Eksekutif</div>
-        <div class="price-amount">Rp 1,1 Jt</div>
-        <div class="price-period">per bulan · ukuran 4×5 m</div>
+        <span class="price-type">Tipe B</span>
+        <div class="price-name">AC</div>
+        <div class="price-amount">Rp 1,4 Jt</div>
+        <div class="price-period">per bulan · ukuran 3,5×5 m</div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="price-feature">Semua fasilitas Tipe B</li>
-          <li class="price-feature">TV 32" + Netflix</li>
-          <li class="price-feature">Mini kulkas</li>
-          <li class="price-feature">Sofa &amp; meja kerja ergonomis</li>
-          <li class="price-feature">Laundry gratis 5 kg/bulan</li>
-          <li class="price-feature">Cleaning kamar 1×/minggu</li>
+          <li class="price-feature">AC 1/2 PK + listrik included</li>
+          <li class="price-feature">Kamar mandi dalam</li>
+          <li class="price-feature">Kasur, meja, &amp; lemari bawaan</li>
+          <li class="price-feature">WiFi 150 Mbps</li>
+          <li class="price-feature">Parkir motor</li>
         </ul>
         <a href="#kontak" class="price-btn">Tanya Ketersediaan</a>
       </div>
+
     </div>
     <p class="price-note">Harga dapat berubah sewaktu-waktu · Diskon tersedia untuk kontrak 6 &amp; 12 bulan</p>
   </section>
@@ -947,7 +942,7 @@
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Tempatnya nyaman banget, kamar mandinya bersih dan ada air panas. Lokasinya juga strategis, deket kampus dan minimarket. Highly recommended!"</p>
+        <p class="testi-quote">"Tempatnya nyaman banget, kamar mandinya bersih. Lokasinya juga strategis, deket kampus dan minimarket. Highly recommended!"</p>
         <div class="testi-author">
           <div class="testi-avatar">R</div>
           <div><span class="testi-name">Rizal Fadhli</span><span class="testi-info">Penghuni sejak 2022 · Mahasiswa Undip</span></div>
@@ -1024,9 +1019,8 @@
           <label>Tipe Kamar yang Diminati</label>
           <select id="f-tipe">
             <option value="">Pilih tipe kamar...</option>
-            <option>Tipe A — Standar (Rp 600K/bulan)</option>
-            <option>Tipe B — Premium (Rp 850K/bulan)</option>
-            <option>Tipe C — Eksekutif (Rp 1,1 Jt/bulan)</option>
+            <option>Tipe A — Non AC (Rp 950K/bulan)</option>
+            <option>Tipe B — AC (Rp 1,4 Jt/bulan)</option>
             <option>Belum tahu, minta rekomendasi</option>
           </select>
         </div>
