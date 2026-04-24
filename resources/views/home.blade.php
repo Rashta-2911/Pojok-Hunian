@@ -658,6 +658,52 @@
       outline: none;
       transition: border-color 0.2s, background 0.2s;
       -webkit-appearance: none;
+      appearance: none;
+    }
+
+    /* Custom Dropdown Styling */
+    .custom-dropdown { position: relative; user-select: none; }
+    .dropdown-selected {
+      width: 100%; padding: 0.7rem 0.88rem;
+      border: 1.5px solid rgba(232,168,32,0.25);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      font-family: var(--font); font-size: 0.86rem; color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .custom-dropdown.active .dropdown-selected {
+      border-color: var(--gold); border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+      background: var(--white);
+    }
+    .dropdown-selected::after {
+      content: "▼"; font-size: 0.6rem; color: var(--dark);
+      transition: transform 0.3s;
+    }
+    .custom-dropdown.active .dropdown-selected::after { transform: rotate(180deg); }
+    
+    .dropdown-list {
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--white);
+      border: 1.5px solid var(--gold); border-top: none;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      transform: scaleY(0); transform-origin: top;
+      opacity: 0; visibility: hidden;
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s;
+      z-index: 100;
+      overflow: hidden;
+    }
+    .custom-dropdown.active .dropdown-list {
+      transform: scaleY(1); opacity: 1; visibility: visible;
+    }
+    .dropdown-option {
+      padding: 0.75rem 1rem; font-size: 0.86rem; color: var(--dark);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .dropdown-option:hover {
+      background: var(--gold-lt); color: var(--dark); font-weight: 500;
     }
 
     .form-group input:focus,
@@ -836,9 +882,9 @@
       <h2 class="section-title">Lihat kondisi nyata setiap sudut kos</h2>
     </div>
     <div class="gallery-grid">
-      <div class="g-item g1" data-label="Kamar Tipe Premium"><div class="img-placeholder">🛏</div></div>
+      <div class="g-item g1" data-label="Kamar"><div class="img-placeholder">🛏</div></div>
       <div class="g-item g2" data-label="Kamar Mandi Dalam"><div class="img-placeholder">🚿</div></div>
-      <div class="g-item g4" data-label="Dapur Bersama"><div class="img-placeholder">🍳</div></div>
+      <div class="g-item g4" data-label="Dapur Pribadi"><div class="img-placeholder">🍳</div></div>
       <div class="g-item g5" data-label="Area Parkir">
         <img src="images/Parkiran.jpeg" alt="Area Parkir" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
         <div class="img-placeholder" style="display:none;">🚗</div>
@@ -897,7 +943,7 @@
         <div class="price-period">per bulan · ukuran 3,5×5 m</div>
         <div class="price-divider" style="background:rgba(232,168,32,0.22)"></div>
         <ul class="price-features">
-          <li class="price-feature">Kasur &amp; lemari bawaan</li>
+          <li class="price-feature">Kasur, meja &amp; lemari bawaan</li>
           <li class="price-feature">WiFi 150 Mbps</li>
           <li class="price-feature">Kamar mandi dalam</li>
           <li class="price-feature">Parkir motor</li>
@@ -1002,9 +1048,9 @@
             <div class="ch-text"><strong>Email</strong><span>kosshinta@gmail.com</span></div>
             <span class="ch-arrow">→</span>
           </a>
-          <a href="https://instagram.com" target="_blank" class="kontak-channel">
+          <a href="https://www.instagram.com/pojokhunian_/" target="_blank" class="kontak-channel">
             <div class="ch-icon">📸</div>
-            <div class="ch-text"><strong>Instagram</strong><span>@kosshinta · DM terbuka</span></div>
+            <div class="ch-text"><strong>Instagram</strong><span>@pojokhunian_ · DM terbuka</span></div>
             <span class="ch-arrow">→</span>
           </a>
         </div>
@@ -1017,12 +1063,15 @@
         </div>
         <div class="form-group">
           <label>Tipe Kamar yang Diminati</label>
-          <select id="f-tipe">
-            <option value="">Pilih tipe kamar...</option>
-            <option>Tipe A — Non AC (Rp 950K/bulan)</option>
-            <option>Tipe B — AC (Rp 1,4 Jt/bulan)</option>
-            <option>Belum tahu, minta rekomendasi</option>
-          </select>
+          <div class="custom-dropdown" id="dropdown-tipe">
+            <div class="dropdown-selected">Pilih tipe kamar...</div>
+            <div class="dropdown-list">
+              <div class="dropdown-option" data-value="Tipe A — Non AC (Rp 950K/bulan)">Tipe A — Non AC (Rp 950K/bulan)</div>
+              <div class="dropdown-option" data-value="Tipe B — AC (Rp 1,4 Jt/bulan)">Tipe B — AC (Rp 1,4 Jt/bulan)</div>
+              <div class="dropdown-option" data-value="Belum tahu, minta rekomendasi">Belum tahu, minta rekomendasi</div>
+            </div>
+          </div>
+          <input type="hidden" id="f-tipe" value="">
         </div>
         <div class="form-group"><label>Rencana Masuk</label><input type="text" id="f-tanggal" placeholder="Contoh: Bulan depan / 1 Januari 2026" /></div>
         <div class="form-group"><label>Pesan / Pertanyaan</label><textarea id="f-pesan" placeholder="Tulis pertanyaan atau keterangan tambahanmu di sini..."></textarea></div>
@@ -1092,6 +1141,31 @@
     document.getElementById('toast').classList.remove('show');
   }, 3000);
 }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.getElementById('dropdown-tipe');
+    const selected = dropdown.querySelector('.dropdown-selected');
+    const list = dropdown.querySelector('.dropdown-list');
+    const input = document.getElementById('f-tipe');
+
+    selected.addEventListener('click', (e) => {
+      dropdown.classList.toggle('active');
+      e.stopPropagation();
+    });
+
+    list.querySelectorAll('.dropdown-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        selected.textContent = opt.textContent;
+        selected.style.color = 'var(--dark)';
+        input.value = opt.getAttribute('data-value');
+        dropdown.classList.remove('active');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.remove('active');
+    });
+  });
   </script>
 </body>
 </html>
