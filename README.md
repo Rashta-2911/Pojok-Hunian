@@ -7,52 +7,66 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# PojokHunian
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Sistem informasi manajemen indekos berbasis web, dibangun dengan Laravel dan Filament.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![Laravel](https://img.shields.io/badge/Laravel-13-FF2D20?logo=laravel&logoColor=white)
+![Filament](https://img.shields.io/badge/Filament-v5-F59E0B)
+![PHP](https://img.shields.io/badge/PHP-8.4-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tentang Project
 
-## Learning Laravel
+PojokHunian membantu pemilik indekos mengelola properti, kamar, penghuni,
+sewa, tagihan, dan pembayaran dalam satu sistem.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Fitur Utama
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Manajemen properti, tipe kamar, dan kamar
+- Manajemen penghuni dan kontrak sewa
+- Tagihan otomatis dan pengingat via WhatsApp
+- Hak akses berbasis peran (Admin dan Pemilik)
+- Dashboard statistik pendapatan dan tagihan
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Teknologi
 
-## Agentic Development
+Laravel 13, Filament v5, Spatie Permission, MySQL, Laravel Sail (Docker)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Instalasi
 
 ```bash
-composer require laravel/boost --dev
+git clone https://github.com/username/nama-repo.git
+cd nama-repo
 
-php artisan boost:install
+docker run --rm -u "$(id -u):$(id -g)" -v "$(pwd):/var/www/html" -w /var/www/html \
+    laravelsail/php84-composer:latest composer install --ignore-platform-reqs
+
+cp .env.example .env
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan key:generate
+./vendor/bin/sail artisan migrate --seed
+./vendor/bin/sail npm install
+./vendor/bin/sail npm run build
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Buka `http://localhost/admin`.
 
-## Contributing
+## Struktur Peran
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Peran | Hak akses |
+|---|---|
+| Admin | Mengelola seluruh data |
+| Pemilik | Melihat data miliknya sendiri |
 
-## Code of Conduct
+## Kontribusi
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. `git checkout -b feature/nama-fitur`
+2. `git commit -m "feat: deskripsi"`
+3. `git push -u origin feature/nama-fitur`
+4. Buat Pull Request
 
-## Security Vulnerabilities
+## Lisensi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Project ini dikembangkan untuk keperluan skripsi.
+Dibangun di atas [Laravel](https://laravel.com), lisensi [MIT](https://opensource.org/licenses/MIT).
