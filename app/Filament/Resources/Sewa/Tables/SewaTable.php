@@ -70,7 +70,7 @@ class SewaTable
                     }),
             ])
             ->filters([
-                TrashedFilter::make(),
+                TrashedFilter::make()
             ])
             ->recordActions([
                 ViewAction::make()

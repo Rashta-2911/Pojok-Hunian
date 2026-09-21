@@ -35,7 +35,7 @@ class TagihanChart extends ChartWidget
                     'backgroundColor' => [
                         '#00d492',  // Gold — Lunas
                         '#FFBD00',  // Navy — Belum Lunas
-                        '#BC5C5C',  // Brick — Terlambat
+                        '#C1121F',  // Brick — Terlambat
                     ],
                     'hoverBackgroundColor' => [
                         '#D9A229',  // Darker Gold

@@ -641,9 +641,27 @@
     color: #FFFFFF !important;
 }
 
+
+
 .dark .view-action-button:hover {
-    background-color: #F8FAFC !important;
-    color: #1E2A45 !important;
+    color: #939393 !important;
+}
+
+/* Filter and Column Action Buttons in Dark Mode */
+.dark .fi-ta-header-toolbar .fi-icon-btn,
+.dark .fi-ta-header-toolbar .fi-icon-btn-icon,
+.dark .fi-ta-header-toolbar .fi-btn-icon,
+.dark .fi-dropdown-trigger {
+    color: #FFFFFF !important;
+}
+
+.dark .fi-ta-header-toolbar .fi-icon-btn:hover,
+.dark .fi-ta-header-toolbar .fi-btn:hover,
+.dark .fi-ta-header-toolbar .fi-dropdown-trigger:hover,
+.dark .fi-ta-filters-trigger-action-ctn .fi-btn:hover,
+.dark .fi-ta-col-manager-dropdown .fi-btn:hover,
+.dark .fi-ta-col-manager-modal .fi-btn:hover {
+    color: #939393 !important;
 }
 
 /* ─── General Text Readability & Logo in Dark Mode ─── */
