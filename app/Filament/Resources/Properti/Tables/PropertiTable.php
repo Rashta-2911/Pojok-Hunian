@@ -78,6 +78,7 @@ class PropertiTable
             ->recordActions([
                 ViewAction::make()
                     ->iconButton()
+                    ->extraAttributes(['class' => 'view-action-button'])
                     ->tooltip('Lihat Detail'),
                 EditAction::make()
                     ->iconButton()

@@ -99,7 +99,10 @@ class PenggajianTable
                 return $query->whereRaw('1 = 0');
             })
             ->recordActions([
-                ViewAction::make(),
+                ViewAction::make()
+                    ->iconButton()
+                    ->extraAttributes(['class' => 'view-action-button'])
+                    ->tooltip('Lihat Detail'),
                 EditAction::make(),
                 Action::make('tandaiDibayar')
                     ->label('Tandai Dibayar')

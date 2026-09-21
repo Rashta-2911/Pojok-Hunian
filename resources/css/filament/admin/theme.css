@@ -467,7 +467,7 @@
 
 /* Background utama */
 .dark .fi-body {
-    background: #151d2f !important;
+    background: #00050f !important;
 }
 
 /* Topbar */
@@ -575,8 +575,8 @@
 }
 
 .dark .fi-ta-header-cell {
-    background: #334155 !important;
-    color: #94a3b8 !important;
+    background: #000307 !important;
+    color: #fbfafa !important;
     border-bottom: 2px solid rgba(255, 255, 255, 0.06) !important;
 }
 
@@ -634,6 +634,16 @@
 
 .dark .fi-breadcrumbs a {
     color: #CBD5E1 !important;
+}
+
+/* View action button in dark mode */
+.dark .view-action-button {
+    color: #FFFFFF !important;
+}
+
+.dark .view-action-button:hover {
+    background-color: #F8FAFC !important;
+    color: #1E2A45 !important;
 }
 
 /* ─── General Text Readability & Logo in Dark Mode ─── */
