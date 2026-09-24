@@ -254,7 +254,7 @@
 
         {{-- ═══ Empty State ═══ --}}
         @if ($overdue->isEmpty() && $upcoming->isEmpty())
-            <div class="overflow-hidden rounded-2xl border border-emerald-200/40 bg-white shadow-sm dark:border-emerald-500/10 dark:bg-gray-900/60">
+            <div class="overflow-hidden rounded-2xl border border-emerald-200/40 bg-white shadow-sm dark:border-gray-700/50 dark:bg-gray-900/60">
                 <div class="flex flex-col items-center justify-center py-16 text-center">
                     <div class="mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-500 shadow-xl shadow-emerald-500/20">
                         <x-filament::icon icon="heroicon-o-check-circle" class="h-10 w-10 text-white" />
